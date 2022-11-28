@@ -1,0 +1,11 @@
+node {
+    stage('SCM') {
+     git branch: 'main', url: 'https://github.com/teja-2123/TestRepo.git' 
+    }
+     stage('Maven') {
+        sh 'mvn package'       
+    }  
+   stage('Archive') {
+    archiveArtifacts artifacts: 'target\\messageUtil-1.0.jar', followSymlinks: false    
+    }
+}
